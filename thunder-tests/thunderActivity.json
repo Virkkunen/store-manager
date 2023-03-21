@@ -26,5 +26,24 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "244cc942-ecb1-4028-8b5d-9738b0d302f7",
+    "colId": "history",
+    "containerId": "",
+    "name": "create product",
+    "url": "localhost:3001/products",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-03-21T18:19:17.690Z",
+    "modified": "2023-03-21T22:06:05.055Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"name\": \"ProductXj\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
