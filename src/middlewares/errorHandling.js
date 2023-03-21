@@ -2,9 +2,14 @@ require('express-async-errors');
 const errors = require('../utils');
 
 const errorHandling = (err, _req, res, next) => {
-  const key = Object.keys(errors)
-    .find((k) => errors[k].message === err.message);
-  const error = errors[key] || errors.DEFAULT;
+  // const key = Object.keys(errors)
+  //   .find((k) => errors[k].message === err.message);
+  // const error = errors[key] || errors.DEFAULT;
+  //
+  // só depois eu percebi que não precisava desse paranaue todo
+  // queria ser mais esperto
+  console.log(err.message)
+  const error = errors[err.message];
   res.status(error.status).json({ message: error.message });
   next(err);
 };

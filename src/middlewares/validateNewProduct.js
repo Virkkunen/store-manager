@@ -1,4 +1,5 @@
 const joi = require('joi');
+const errors = require('../utils');
 
 const schema = joi.object({
   name: joi.string()
@@ -9,8 +10,10 @@ const schema = joi.object({
 const validateNewProduct = (req, res, next) => {
   const { error } = schema.validate(req.body);
   if (error) {
-    const errors = error.details.map((detail) => detail.message);
-    throw new Error(errors);
+    const errMsg = error.details.map((detail) => detail.message).join('');
+    const key = Object.keys(errors)
+      .find((k) => errors[k].message === errMsg);
+    throw new Error(key);
   }
   next();
 };
