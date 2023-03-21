@@ -3,8 +3,16 @@ const errorMap = {
     message: 'Product not found',
     status: 404,
   },
+  SALE_NOT_FOUND: {
+    message: 'Sale not found',
+    status: 404,
+  },
   CANT_CREATE_PRODUCT: {
     message: 'Can\'t create product',
+    status: 400,
+  },
+  CANT_CREATE_SALE: {
+    message: 'Can\'t create sale',
     status: 400,
   },
   NAME_EMPTY: {
@@ -19,7 +27,10 @@ const errorMap = {
     message: '"name" is required',
     status: 400,
   },
-  DEFAULT: 500,
+  DEFAULT: {
+    message: 'Internal Server Error',
+    status: 500,
+  },
 };
 
 module.exports = errorMap;

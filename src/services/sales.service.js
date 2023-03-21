@@ -8,11 +8,18 @@ const getAllSales = async () => {
 
 const getSaleById = async (id) => {
   const result = await salesModel.getSaleById(id);
-  if (!result) throw Error('PRODUCT_NOT_FOUND');
+  if (!result) throw Error('SALE_NOT_FOUND');
+  return result;
+};
+
+const createSale = async (sale) => {
+  const result = await salesModel.createSale(sale);
+  if (!result) throw Error('CANT_CREATE_SALE');
   return result;
 };
 
 module.exports = {
   getAllSales,
   getSaleById,
+  createSale,
 };
