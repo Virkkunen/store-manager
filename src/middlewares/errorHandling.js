@@ -8,7 +8,6 @@ const errorHandling = (err, _req, res, next) => {
   //
   // só depois eu percebi que não precisava desse paranaue todo
   // queria ser mais esperto
-  console.log(err.message)
   const error = errors[err.message];
   res.status(error.status).json({ message: error.message });
   next(err);
