@@ -7,7 +7,7 @@ switch (err.message) {
       res.json({ message: err.message });
       break;
     default:
-      res.status(505);
+      res.status(500);
       res.json({ message: 'Internal server error' });
   }
   next(err);
