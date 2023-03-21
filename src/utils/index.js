@@ -1,3 +1,3 @@
-const errors = require('./errors');
+const errors = require('./errorMap');
 
 module.exports = errors;
