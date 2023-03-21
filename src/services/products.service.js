@@ -2,7 +2,7 @@ const { productsModel } = require('../models');
 
 const getAllProducts = async () => {
   const result = await productsModel.getAllProducts();
-  if (!result) throw Error('PRODUCT_NOT_FOUND');
+  if (!result) throw Error('DEFAULT');
   return result;
 };
 
