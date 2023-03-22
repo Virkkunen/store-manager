@@ -5,16 +5,16 @@ const getAllSales = async () => {
     SELECT
       sal.id AS saleId,
       DATE_FORMAT(sal.date, '%Y-%m-%dT%H:%i:%s.000Z') AS date,
-      salProd.product_id AS prodId, salProd.quantity
+      salProd.product_id AS productId, salProd.quantity
     FROM sales sal
     JOIN sales_products salProd ON sal.id = salProd.sale_id
-    ORDER BY saleId ASC, prodId ASC;
+    ORDER BY saleId ASC, productId ASC;
   `);
   // faltou map na linha
   return rows.map((row) => ({
     saleId: row.saleId,
     date: row.date,
-    productId: row.prodId,
+    productId: row.productId,
     quantity: row.quantity,
   }));
 };
@@ -24,13 +24,13 @@ const getSaleById = async (id) => {
   const [rows] = await connection.execute(`
     SELECT
       DATE_FORMAT(sal.date, '%Y-%m-%dT%H:%i:%s.000Z') AS date,
-      salProd.product_id AS prodId, salProd.quantity
+      salProd.product_id AS productId, salProd.quantity
     FROM sales sal
     JOIN sales_products salProd ON sal.id = salProd.sale_id WHERE sal.id = ?
   `, [id]);
   return rows.map((row) => ({
     date: row.date,
-    productId: row.prodId,
+    productId: row.productId,
     quantity: row.quantity,
   }));
 };
