@@ -1,13 +1,38 @@
 const connection = require('../database/connection');
 
 const getAllSales = async () => {
-  const [result] = await connection.execute('SELECT * FROM sales;');
-  return result;
+  const [rows] = await connection.execute(`
+    SELECT
+      sal.id AS saleId,
+      DATE_FORMAT(sal.date, '%Y-%m-%dT%H:%i:%s.000Z') AS date,
+      salProd.product_id AS prodId, salProd.quantity
+    FROM sales sal
+    JOIN sales_products salProd ON sal.id = salProd.sale_id
+    ORDER BY saleId ASC, prodId ASC;
+  `);
+  // faltou map na linha
+  return rows.map((row) => ({
+    saleId: row.saleId,
+    date: row.date,
+    productId: row.prodId,
+    quantity: row.quantity,
+  }));
 };
 
 const getSaleById = async (id) => {
-  const [[result]] = await connection.execute('SELECT * FROM sales WHERE id = ?;', [id]);
-  return result;
+  // praticamente igual ao getAllSales
+  const [rows] = await connection.execute(`
+    SELECT
+      DATE_FORMAT(sal.date, '%Y-%m-%dT%H:%i:%s.000Z') AS date,
+      salProd.product_id AS prodId, salProd.quantity
+    FROM sales sal
+    JOIN sales_products salProd ON sal.id = salProd.sale_id WHERE sal.id = ?
+  `, [id]);
+  return rows.map((row) => ({
+    date: row.date,
+    productId: row.prodId,
+    quantity: row.quantity,
+  }));
 };
 
 // const createSale = async ({ productId, quantity }) => {
@@ -29,6 +54,7 @@ const createSale = async (saleId, productId, quantity) => {
   return insertId;
 };
 
+// roda primeiro o createSaleDate pra pegar o ID da data
 const createSaleDate = async () => {
   const [{ insertId }] = await connection.execute(`
     INSERT INTO sales (date)

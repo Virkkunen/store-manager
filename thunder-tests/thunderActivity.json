@@ -55,14 +55,28 @@
     "method": "POST",
     "sortNum": 0,
     "created": "2023-03-21T18:19:17.690Z",
-    "modified": "2023-03-22T03:14:14.526Z",
+    "modified": "2023-03-22T03:31:21.769Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "[\n  {\n    \"productId\": 99999,\n    \"quantity\": 2\n  }\n]",
+      "raw": "[\n  {\n    \"productId\": 1,\n    \"quantity\": 2\n  },\n  {\n    \"productId\": 2,\n    \"quantity\": 2\n  }\n]",
       "form": []
     },
+    "tests": []
+  },
+  {
+    "_id": "0b2e1747-52a4-4491-8eb8-3f33f6a84d33",
+    "colId": "history",
+    "containerId": "",
+    "name": "sale by ID",
+    "url": "localhost:3001/sales/13",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-03-21T18:19:17.690Z",
+    "modified": "2023-03-22T13:47:34.715Z",
+    "headers": [],
+    "params": [],
     "tests": []
   }
 ]
