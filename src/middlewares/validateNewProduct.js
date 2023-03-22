@@ -1,19 +1,18 @@
 const joi = require('joi');
-const errors = require('../utils');
 
-const schema = joi.object({
-  name: joi.string()
-    .min(5)
-    .required(),
+const prodSchema = joi.object({
+  name: joi.string().min(5).required().label('name'),
+}).messages({
+  'any.required': 'NAME_MISSING',
+  'string.min': 'NAME_TOO_SHORT',
+  'string.empty': 'NAME_EMPTY',
 });
 
 const validateNewProduct = (req, res, next) => {
-  const { error } = schema.validate(req.body);
+  const { error } = prodSchema.validate(req.body);
   if (error) {
-    const errMsg = error.details.map((detail) => detail.message).join('');
-    const key = Object.keys(errors)
-      .find((k) => errors[k].message === errMsg);
-    throw new Error(key);
+    const err = error.details.map((detail) => detail.message).join('');
+    throw new Error(err);
   }
   next();
 };
