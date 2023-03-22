@@ -23,9 +23,11 @@ const createProduct = async ({ name }) => {
 };
 
 const updateProduct = async (id, name) => {
-  const [result] = await connection.execute(`
+  // espaguete
+  await connection.execute(`
     UPDATE products SET name = ? WHERE id = ?;
   `, [name, id]);
+  const [[result]] = await connection.execute('SELECT * FROM products WHERE id = ?;', [id]);
   return result;
 };
 

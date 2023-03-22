@@ -20,7 +20,7 @@ const createProduct = async (product) => {
 
 const updateProduct = async (id, name) => {
   const result = await productsModel.updateProduct(id, name);
-  if (!result) throw Error('CANT_UPDATE_PRODUCT');
+  if (!result) throw Error('PRODUCT_NOT_FOUND');
   return result;
 };
 
