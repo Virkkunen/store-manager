@@ -24,10 +24,19 @@ const createProductMock = {
 
 const insertIdProductReturn = [{ insertId: 1 }];
 
+const mockFindProductName = { id: 1, name: 'Qwerty' };
+
+const mockFindProducts = [
+  { id: 1, name: 'Qwerty' },
+  { id: 2, name: 'Uiop' },
+];
+
 module.exports = {
   getAllProductsReturn,
   getProductByIdReturn,
   getProductByIdError,
   insertIdProductReturn,
   createProductMock,
+  mockFindProductName,
+  mockFindProducts,
 };

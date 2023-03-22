@@ -49,7 +49,9 @@ describe('/sales model', () => {
     expect(result).to.deep.equal(mockAffectedRows.affectedRows);
   });
 
-  xit('Atualiza uma sale', async () => {
+  it('Atualiza uma sale', async () => {
     sinon.stub(connection, 'execute').resolves([mockAffectedRows]);
+    const result = await salesModel.updateSale(1, 2, 3);
+    expect(result).to.deep.equal(mockAffectedRows);
   });
 });
