@@ -18,8 +18,16 @@ const getProductByIdError = {
   message: 'Product not found',
 };
 
+const createProductMock = {
+  name: 'Produto X',
+};
+
+const insertIdProductReturn = [{ insertId: 1 }];
+
 module.exports = {
   getAllProductsReturn,
   getProductByIdReturn,
   getProductByIdError,
+  insertIdProductReturn,
+  createProductMock,
 };

@@ -8,6 +8,8 @@ const {
   getAllProductsReturn,
   getProductByIdReturn,
   getProductByIdError,
+  insertIdProductReturn,
+  createProductMock,
 } = require('../mocks/products.model.mock');
 const { productsModel } = require('../../../src/models');
 const { query } = require('../../../src/database/connection');
@@ -38,6 +40,15 @@ describe('Testa /products models', () => {
       // sinon.stub(connection, 'execute').resolves();
       // const result = await productsModel.getProductById(10);
       // expect(result).to.deep.equal(getProductByIdError);
+    });
+  });
+
+  describe('Função createProduct', () => {
+    it('Cria o produto corretamente', async () => {
+      sinon.stub(connection, 'execute').resolves([insertIdProductReturn]);
+      const result = await productsModel.createProduct(createProductMock);
+      // eu nem sei mais o porque dos []
+      expect([result]).to.deep.equal(insertIdProductReturn);
     });
   });
 });
