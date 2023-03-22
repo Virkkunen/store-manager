@@ -11,5 +11,6 @@ salesRouter.post('/',
   validateCreateSale,
   validateProductId,
   salesController.createSale);
+salesRouter.delete('/:id', salesController.deleteSale);
 
 module.exports = salesRouter;
