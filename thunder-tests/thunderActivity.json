@@ -142,11 +142,11 @@
     "colId": "history",
     "containerId": "",
     "name": "delete product",
-    "url": "localhost:3001/products/188",
+    "url": "localhost:3001/products/1",
     "method": "DELETE",
     "sortNum": 0,
     "created": "2023-03-22T15:56:07.880Z",
-    "modified": "2023-03-22T16:00:53.894Z",
+    "modified": "2023-03-22T22:05:56.352Z",
     "headers": [],
     "params": [],
     "tests": []
