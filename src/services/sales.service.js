@@ -18,8 +18,8 @@ const createSale = async (sales) => {
     salesModel.createSale(saleId, productId, quantity)
   ));
   await Promise.all(salesPromises);
-  const soldItems = sales.map(({ productId, quantity }) => ({ productId, quantity }));
-  return { id: saleId, soldItems };
+  const itemsSold = sales.map(({ productId, quantity }) => ({ productId, quantity }));
+  return { id: saleId, itemsSold };
 };
 
 module.exports = {
