@@ -99,6 +99,25 @@
     "tests": []
   },
   {
+    "_id": "abc9e06d-116d-4503-9326-12e98eb6ed6a",
+    "colId": "history",
+    "containerId": "",
+    "name": "update sale",
+    "url": "localhost:3001/sales/1",
+    "method": "PUT",
+    "sortNum": 0,
+    "created": "2023-03-22T15:09:59.664Z",
+    "modified": "2023-03-22T20:34:28.437Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "[\n  {\n    \"productId\": 1,\n    \"quantity\": 10\n  },\n  {\n    \"productId\": 2,\n    \"quantity\": 3\n  }\n]",
+      "form": []
+    },
+    "tests": []
+  },
+  {
     "_id": "374c4157-df65-4510-ae71-c4d186811d0e",
     "colId": "history",
     "containerId": "",

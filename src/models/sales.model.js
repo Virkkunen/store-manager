@@ -73,10 +73,21 @@ const deleteSale = async (id) => {
   return result.affectedRows;
 };
 
+const updateSale = async (id, productId, quantity) => {
+  const [result] = await connection.execute(`
+    UPDATE sales_products SET quantity = ?
+    WHERE sale_id = ? AND product_id = ?;
+  `, [quantity, id, productId]);
+  // eu sei que não é pra estar aqui mas estou cansado agora
+  if (result.affectedRows === 0) throw Error('SALE_NOT_FOUND');
+  return result;
+};
+
 module.exports = {
   getAllSales,
   getSaleById,
   createSale,
   createSaleDate,
   deleteSale,
+  updateSale,
 };
