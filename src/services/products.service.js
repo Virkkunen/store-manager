@@ -31,10 +31,21 @@ const deleteProduct = async (id) => {
   return result;
 };
 
+const findProduct = async (q) => {
+  let result;
+  if (!q) {
+    result = await productsModel.getAllProducts();
+    return result;
+  }
+  result = await productsModel.findProduct(q);
+  return result;
+};
+
 module.exports = {
   getAllProducts,
   getProductById,
   createProduct,
   updateProduct,
   deleteProduct,
+  findProduct,
 };

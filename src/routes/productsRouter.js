@@ -10,6 +10,7 @@ const productsRouter = express.Router();
 //   return res.status(404).send({ message: 'Product not found' });
 // });
 
+productsRouter.get('/search', productsController.findProduct);
 productsRouter.get('/', productsController.getAllProducts);
 productsRouter.get('/:id', productsController.getProductById);
 productsRouter.post('/', validateNewProduct, productsController.createProduct);
