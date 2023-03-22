@@ -36,7 +36,7 @@ describe('Testa /products models', () => {
       expect([result]).to.deep.equal(getProductByIdReturn);
     });
 
-    it('Retorna erro 404 quando o produto não existe', async () => {
+    xit('Retorna erro 404 quando o produto não existe', async () => {
       // sinon.stub(connection, 'execute').resolves();
       // const result = await productsModel.getProductById(10);
       // expect(result).to.deep.equal(getProductByIdError);
