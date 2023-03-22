@@ -43,6 +43,10 @@ const errorMap = {
     message: '"productId" must be a number',
     status: 422,
   },
+  CANT_UPDATE_PRODUCT: {
+    message: 'Can\'t update product',
+    status: 400,
+  },
   DEFAULT: {
     message: 'Internal Server Error',
     status: 500,

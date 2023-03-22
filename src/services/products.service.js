@@ -18,8 +18,15 @@ const createProduct = async (product) => {
   return result;
 };
 
+const updateProduct = async (id, name) => {
+  const result = await productsModel.updateProduct(id, name);
+  if (!result) throw Error('CANT_UPDATE_PRODUCT');
+  return result;
+};
+
 module.exports = {
   getAllProducts,
   getProductById,
   createProduct,
+  updateProduct,
 };

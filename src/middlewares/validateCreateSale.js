@@ -5,6 +5,9 @@ const salesSchema = joi.object({
   productId: joi.number().required().label('productId'),
   quantity: joi.number().min(1).greater(0).required()
     .label('quantity'),
+}).messages({
+  'string.greater': '{#label}_LESS_THAN_ONE',
+  'any.required': '{#label}_MISSING',
 });
 
 const validateSale = (sale) => {
