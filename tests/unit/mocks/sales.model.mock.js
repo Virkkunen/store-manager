@@ -15,9 +15,34 @@ const insertId = 1;
 
 const mockAffectedRows = { affectedRows: 1 };
 
+const mockCreateSale = [{ productId: 1, quantity: 2 }];
+
+const mockCreatedSale = {
+  "id": 3,
+  "itemsSold": [
+    {
+      "productId": 1,
+      "quantity": 2
+    }
+  ]
+};
+
+const mockUpdateSale = {
+  itemsUpdated: [
+    {
+      productId: 1,
+      quantity: 2,
+    }
+  ],
+  saleId: 1,
+};
+
 module.exports = {
   mockSale,
   mockSaleNoId,
   insertId,
   mockAffectedRows,
+  mockCreateSale,
+  mockCreatedSale,
+  mockUpdateSale,
 };
