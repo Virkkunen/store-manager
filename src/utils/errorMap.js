@@ -27,6 +27,22 @@ const errorMap = {
     message: '"name" is required',
     status: 400,
   },
+  PRODUCTID_MISSING: {
+    message: '"productId" is required',
+    status: 400,
+  },
+  QUANTITY_MISSING: {
+    message: '"quantity" is required',
+    status: 400,
+  },
+  QUANTITY_LESS_THAN_ONE: {
+    message: '"quantity" must be greater than or equal to 1',
+    status: 422,
+  },
+  PRODUCTID_NAN: {
+    message: '"productId" must be a number',
+    status: 422,
+  },
   DEFAULT: {
     message: 'Internal Server Error',
     status: 500,

@@ -12,10 +12,14 @@ const getSaleById = async (id) => {
   return result;
 };
 
-const createSale = async (sale) => {
-  const result = await salesModel.createSale(sale);
-  if (!result) throw Error('CANT_CREATE_SALE');
-  return result;
+const createSale = async (sales) => {
+  const saleId = await salesModel.createSaleDate();
+  const salesPromises = sales.map(({ productId, quantity }) => (
+    salesModel.createSale(saleId, productId, quantity)
+  ));
+  await Promise.all(salesPromises);
+  const soldItems = sales.map(({ productId, quantity }) => ({ productId, quantity }));
+  return { id: saleId, soldItems };
 };
 
 module.exports = {
