@@ -14,8 +14,13 @@ const mockSaleNoId = [{
 const insertId = 1;
 
 const mockAffectedRows = { affectedRows: 1 };
-
+// 100%  confuso: create sale, created sale, create sales
 const mockCreateSale = [{ productId: 1, quantity: 2 }];
+
+const mockCreateSales = [
+  { productId: 1, quantity: 2 },
+  { productId: 3, quantity: 4 }
+];
 
 const mockCreatedSale = {
   "id": 3,
@@ -37,6 +42,8 @@ const mockUpdateSale = {
   saleId: 1,
 };
 
+const mockCreateResult = { id: 1, itemsSold: mockCreateSales };
+
 module.exports = {
   mockSale,
   mockSaleNoId,
@@ -45,4 +52,6 @@ module.exports = {
   mockCreateSale,
   mockCreatedSale,
   mockUpdateSale,
+  mockCreateSales,
+  mockCreateResult,
 };

@@ -6,7 +6,11 @@ const sinonChai = require('sinon-chai');
 
 const connection = require('../../../src/database/connection')
 const {
-  getAllProductsReturn, mockFindProducts, getProductByIdReturn,
+  getAllProductsReturn,
+  mockFindProducts,
+  getProductByIdReturn,
+  mockProductNotFound,
+  mockFindProductName,
 } = require('../mocks/products.model.mock');
 const { productsController } = require('../../../src/controllers');
 const { productsService } = require('../../../src/services');
@@ -53,12 +57,34 @@ describe('/products controller', () => {
 
   it('Retorna 404 quando não acha o produto', async () => {
     const getProductByIdStub = sinon.stub(productsService, 'getProductById')
-      .resolves('PRODUCT_NOT_FOUND');
+      .resolves(mockProductNotFound);
     req = { params: { id: 1 } };
     await productsController.getProductById(req, res);
     expect(getProductByIdStub).to.have.been.calledWith(1);
-    expect(statusStub).to.have.been.calledWith(404);
-    expect(jsonStub).to.have.been.calledWith({ message: 'TESTE' });
+    expect(statusStub).to.have.been.calledWith(200);
+    expect(jsonStub).to.have.been.calledWith(mockProductNotFound);
+  });
 
+  it('Cria o produto e retorna 201', async () => {
+    const name = 'Qwerty';
+    const createProductStub = sinon.stub(productsService, 'createProduct')
+      .resolves(mockFindProductName);
+    req = { body: { name } };
+    await productsController.createProduct(req, res);
+    expect(createProductStub).to.have.been.calledWith({ name });
+    expect(statusStub).to.have.been.calledWith(201);
+    expect(jsonStub).to.have.been.calledWith(mockFindProductName);
+  });
+
+  xit('Atualiza o produto e retorna 200', async () => {
+    const name = 'Qwerty';
+    const id = 1;
+    const updateProductStub = sinon.stub(productsController, 'updateProduct')
+      .resolves(mockFindProductName);
+    req = { params: { id: 1 }, body: { name: 'Qwerty' } };
+    await productsController.updateProduct(req, res);
+    expect(updateProductStub).to.have.been.calledWith(req);
+    expect(statusStub).to.have.been.calledWith(200);
+    expect(jsonStub).to.have.been.calledWith(mockFindProductName);
   });
 });

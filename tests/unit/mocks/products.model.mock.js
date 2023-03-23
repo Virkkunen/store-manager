@@ -31,6 +31,8 @@ const mockFindProducts = [
   { id: 2, name: 'Uiop' },
 ];
 
+const mockProductNotFound = { message: 'Product not found' };
+
 module.exports = {
   getAllProductsReturn,
   getProductByIdReturn,
@@ -39,4 +41,5 @@ module.exports = {
   createProductMock,
   mockFindProductName,
   mockFindProducts,
+  mockProductNotFound,
 };
