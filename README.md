@@ -74,6 +74,16 @@ The service is now running on `localhost:3001`
 | :-------- | :------- | :-------------------------------- |
 | `id`      | `number` | **Required**. Id of item to fetch |
 
+#### Search for a product by name
+
+```http
+  GET /products/search?q=${search}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `search`      | `string` | **Required**. Query with a name to search |
+
 #### Create a new product
 
 ```http
@@ -81,9 +91,7 @@ The service is now running on `localhost:3001`
 ```
 Requisition body:
 ```js
-{
-  "name": ${productName}
-}
+{ "name": ${productName} }
 ```
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
@@ -97,9 +105,7 @@ Requisition body:
 
 Requisition body:
 ```js
-{
-  "name": ${productName}
-}
+{ "name": ${productName} }
 ```
 
 | Parameter | Type     | Description                       |
@@ -159,7 +165,43 @@ Requisition body:
 | `productId`      | `number` | **Required**. ID of the product |
 | `quantity`      | `number` | **Required**. How many products to sell |
 
-Able to create multiple sales in one requisition.
+Able to sell multiple products in one requisition.
+
+#### Update a new sale
+
+```http
+  PUT /sales/${id}
+```
+Requisition body:
+```js
+[
+  {
+    "productId": ${productId},
+    "quantity": ${quantity}
+  },
+  {
+    "productId": 3,
+    "quantity": 4
+  }
+]
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `number` | **Required**. ID of the sale |
+| `productId`      | `number` | **Required**. ID of the product |
+| `quantity`      | `number` | **Required**. How many products to sell |
+
+Able to update multiple product sales in one requisition.
+
+#### Delete a sale
+
+```http
+  DELETE /sales/${id}
+```
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `string` | **Required**. ID of the sale to delete |
 
 ## Running Tests
 
