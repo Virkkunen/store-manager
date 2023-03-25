@@ -4,6 +4,7 @@
 A store backend service with CRUD endpoints and database integration that runs locally on a Docker container.
 It can retrieve all products and sales from the database, create, update and delete products and sales.
 
+<img alt="GitHub Top Language" src="https://img.shields.io/github/languages/top/Virkkunen/store-manager" /> <img alt="GitHub Contributors" src="https://img.shields.io/github/contributors/Virkkunen/store-manager" /> <img alt="Github License" src="https://img.shields.io/github/license/Virkkunen/store-manager" />
 
 ## Features
 
