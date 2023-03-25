@@ -1,15 +1,15 @@
 
 # Store Backend
 
-A store backend service using MSC architecture, with CRUD
+A store backend service with CRUD endpoints and database integration that runs locally on a Docker container.
 
 
 ## Features
 
-- Custom time input `(1:19, 79)`
-- Preset buttons 
-- Alarm sound when timer is complete
-- Mobile responsive
+- GET, POST, PUT and DELETE endpoints
+- Database integration
+- MSC architecture
+- Unit tests
 
 
 ## Run Locally
@@ -17,27 +17,32 @@ A store backend service using MSC architecture, with CRUD
 Clone the project
 
 ```bash
-  git clone https://github.com/Virkkunen/timer.git
+  git clone https://github.com/Virkkunen/store-manager.git
 ```
 
 Go to the project directory
 
 ```bash
-  cd timer
+  cd store-manager
 ```
 
 Install dependencies
 
 ```bash
-  npm install
+  npm i
 ```
 
 Start the server
 
 ```bash
-  npm start
+  docker-compose up -d
 ```
 
+Optionally, to access the server terminal
+
+```bash
+  docker exec -it store_manager bash
+```
 
 ## Authors
 
@@ -46,11 +51,4 @@ Start the server
 
 ## Tech Stack
 
-React, React hooks, homebrewed CSS styles
-
-
-## To Do
-- [x] Use useMemo and useCallback for optimizations
-- [ ] Better handling of CSS styles on inputs
-- [ ] Display hours instead of minutes
-- [ ] Convert hour input (1h19, 1h19m5s)
+Node.js, Express.js, MySQL, Docker, CRUD, MSC, Mocha, Chai, Sinnon
