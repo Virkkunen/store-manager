@@ -1,5 +1,5 @@
 
-# Store Backend
+# Store Manager
 
 A store backend service with CRUD endpoints and database integration that runs locally on a Docker container.
 It can retrieve all products and sales from the database, create, update and delete products and sales.
