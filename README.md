@@ -2,7 +2,7 @@
 # Store Backend
 
 A store backend service with CRUD endpoints and database integration that runs locally on a Docker container.
-It can retrieve all products and sales listed, create, update and delete products and sales.
+It can retrieve all products and sales from the database, create, update and delete products and sales.
 
 
 ## Features
@@ -72,6 +72,56 @@ The service is now running on port 3001.
 | :-------- | :------- | :-------------------------------- |
 | `id`      | `number` | **Required**. Id of item to fetch |
 
+#### Create a new product
+
+```http
+  POST /products/
+```
+Requisition body:
+```js
+{
+  "name": "${productName}"
+}
+```
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `number` | **Required**. Id of item to fetch |
+
+#### Get all sales
+
+```http
+  GET /sales
+```
+
+#### Get a specific sale
+
+```http
+  GET /sales/${id}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `number` | **Required**. Id of item to fetch |
+
+#### Create a new sale
+
+```http
+  POST /sales/
+```
+Requisition body:
+```js
+[
+  {
+    "productId": 1,
+    "quantity": 2
+  },
+  {
+    "productId": 3,
+    "quantity": 4
+  }
+]
+```
+
 ## Running Tests
 
 To run tests, run the following command
@@ -87,4 +137,9 @@ To run tests, run the following command
 
 ## Tech Stack
 
-Node.js, Express.js, MySQL, Docker, CRUD, MSC, Mocha, Chai, Sinnon
+Node.js, Express.js, MySQL, Docker, REST API, CRUD, MSC, Mocha, Chai, Sinnon
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
