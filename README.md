@@ -222,5 +222,5 @@ Node.js, Express.js, MySQL, Docker, REST API, CRUD, MSC, Mocha, Chai, Sinnon
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+[GPL-3.0](https://choosealicense.com/licenses/gpl-3.0/)
 
