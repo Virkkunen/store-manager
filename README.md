@@ -52,9 +52,11 @@ Optionally, to access the server terminal
   docker exec -it store_manager bash
 ```
 
-The service is now running on port 3001. 
+The service is now running on `localhost:3001`
 
 ## API Reference
+
+### Products
 
 #### Get all products
 
@@ -80,12 +82,42 @@ The service is now running on port 3001.
 Requisition body:
 ```js
 {
-  "name": "${productName}"
+  "name": ${productName}
 }
 ```
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `id`      | `number` | **Required**. Id of item to fetch |
+| `productName`      | `string` | **Required**. Name of the new product |
+
+#### Update a product
+
+```http
+  PUT /products/${id}
+```
+
+Requisition body:
+```js
+{
+  "name": ${productName}
+}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `number` | **Required**. Id of item to update |
+| `productName`      | `string` | **Required**. New name for the product |
+
+#### Delete a product
+
+```http
+  DELETE /products/${id}
+```
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `string` | **Required**. ID of the product to delete |
+
+
+### Sales
 
 #### Get all sales
 
@@ -101,7 +133,7 @@ Requisition body:
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `id`      | `number` | **Required**. Id of item to fetch |
+| `id`      | `number` | **Required**. Id of sale to fetch |
 
 #### Create a new sale
 
@@ -112,8 +144,8 @@ Requisition body:
 ```js
 [
   {
-    "productId": 1,
-    "quantity": 2
+    "productId": ${productId},
+    "quantity": ${quantity}
   },
   {
     "productId": 3,
@@ -121,6 +153,13 @@ Requisition body:
   }
 ]
 ```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `productId`      | `number` | **Required**. ID of the product |
+| `quantity`      | `number` | **Required**. How many products to sell |
+
+Able to create multiple sales in one requisition.
 
 ## Running Tests
 
